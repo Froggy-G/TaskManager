@@ -37,3 +37,6 @@ class Task(models.Model):
         User, related_name="user_executor", on_delete=models.SET_NULL, null=True
     )
     tags = models.ManyToManyField(Tag)
+
+    def __str__(self):
+        return f"{self.title}"
