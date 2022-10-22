@@ -21,9 +21,9 @@ class Task(models.Model):
 
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
-    date_of_creation = models.DateField()
-    date_of_change = models.DateField()
-    date_of_completion = models.DateField()
+    date_of_creation = models.DateField(auto_now_add=True)
+    date_of_change = models.DateField(blank=True, null=True)
+    date_of_completion = models.DateField(blank=True, null=True)
     status = models.CharField(
         max_length=255, default=Status.NEW_TASK, choices=Status.choices
     )
