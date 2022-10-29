@@ -26,7 +26,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class TaskSerializer(serializers.ModelSerializer):
-    executor = UserSerializer(many=True, read_only=True)
+    executor = UserSerializer(read_only=True)
     tags = TagSerializer(many=True)
 
     class Meta:
