@@ -16,7 +16,7 @@ class UserFilter(FilterSet):
 
 class TaskFilter(FilterSet):
     status = ChoiceFilter(choices=Task.Status.choices, default="NEW_TASK")
-    tags = ModelMultipleChoiceFilter(field_name="tag__title", queryset=Tag.objects.all())
+    tags = ModelMultipleChoiceFilter(field_name="tags__title", queryset=Tag.objects.all())
     author = CharFilter(field_name="user__username", lookup_expr="icontains")
     executor = CharFilter(field_name="user__username", lookup_expr="icontains")
 
