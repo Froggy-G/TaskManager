@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from main.models import User, Task, Tag
 from main.serializers import UserSerializer, TaskSerializer, TagSerializer
-from django_filters import FilterSet, CharFilter, ChoiceFilter
+from django_filters import FilterSet, CharFilter, ChoiceFilter, ModelMultipleChoiceFilter
 
 
 class UserFilter(FilterSet):
@@ -16,7 +16,7 @@ class UserFilter(FilterSet):
 
 class TaskFilter(FilterSet):
     status = ChoiceFilter(choices=Task.Status.choices, default="NEW_TASK")
-    tags = CharFilter(field_name="tag__title", lookup_expr="iexact")
+    tags = ModelMultipleChoiceFilter(field_name="tag__title", queryset=Tag.objects.all())
     author = CharFilter(field_name="user__username", lookup_expr="icontains")
     executor = CharFilter(field_name="user__username", lookup_expr="icontains")
 
