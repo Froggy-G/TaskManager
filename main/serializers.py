@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import User, Task, Tag
+from .models import User, Task, Tag
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -12,8 +12,6 @@ class UserSerializer(serializers.ModelSerializer):
             "last_name",
             "email",
             "role",
-            "date_of_birth",
-            "phone",
         ]
 
 
