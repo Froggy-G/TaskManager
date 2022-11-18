@@ -12,6 +12,8 @@ djangorestframework = "^3.14.0"
 django-filter = "^22.1"
 Markdown = "^3.4.1"
 drf-yasg = "^1.21.4"
+factory-boy = "^3.2.1"
+drf-writable-nested = "^0.7.0"
 
 [tool.poetry.dev-dependencies]
 pytest-django = "^4.5.2"
