@@ -29,6 +29,11 @@ class TestViewSetBase(APITestCase):
     @classmethod
     def list_url(cls, args: List[Union[str, int]] = None) -> str:
         return reverse(f"{cls.basename}-list", args=args)
+
+    @classmethod
+    def list_url_filter(cls, filter: str = None, filter_value: str = None) -> str:
+        url = reverse(f"{cls.basename}-list")
+        return f"{url}?{filter}={filter_value}"
     
     def create(self, data: dict, args: List[Union[str, int]] = None) -> dict:
         self.client.force_login(self.user)
@@ -60,5 +65,11 @@ class TestViewSetBase(APITestCase):
     def list(self) -> dict:
         self.client.force_login(self.user)
         response = self.client.get(self.list_url())
+        assert response.status_code == HTTPStatus.OK, response.content
+        return response.data
+
+    def filter(self, filter: str = None, filter_value: str = None) -> dict:
+        self.client.force_login(self.user)
+        response = self.client.get(self.list_url_filter(filter, filter_value))
         assert response.status_code == HTTPStatus.OK, response.content
         return response.data

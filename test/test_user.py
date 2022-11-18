@@ -44,3 +44,18 @@ class TestUserViewSet(TestViewSetBase):
         users.insert(0, admin_test)
         response = self.list()
         assert response == users
+
+    def test_filter(self):
+        filter_name = "username"
+        filter_value = "a"
+        admin_test = self.retrieve(self.user.id)
+        users = self.create_list(self.users_attributes)
+        users.insert(0, admin_test)
+        filtered_users: list = []
+        for user in users:
+            for char in user[filter_name]:
+                if char == filter_value:
+                    filtered_users.append(user)
+                    break
+        response = self.filter(filter=filter_name, filter_value=filter_value)
+        assert response == filtered_users

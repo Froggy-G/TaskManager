@@ -43,4 +43,15 @@ class TestTaskViewSet(TestViewSetBase):
         tasks = self.create_list(self.tasks_attributes)
         response = self.list()
         assert response == tasks
-        
+    
+    def test_filter(self):
+        filter_name = "status"
+        filter_value = "new_task"
+        tasks = self.create_list(self.tasks_attributes)
+        filtered_tasks: list = []
+        for task in tasks:
+            for field in task:
+                if field == filter_name and filter_value == task[filter_name]:
+                    filtered_tasks.append(task)
+        response = self.filter(filter=filter_name, filter_value=filter_value)
+        assert response == filtered_tasks
