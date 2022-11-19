@@ -73,3 +73,4 @@ class TestViewSetBase(APITestCase):
         response = self.client.get(self.list_url_filter(filter, filter_value))
         assert response.status_code == HTTPStatus.OK, response.content
         return response.data
+        
