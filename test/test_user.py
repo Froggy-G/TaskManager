@@ -34,8 +34,11 @@ class TestUserViewSet(TestViewSetBase):
         assert response == expected_response
 
     def test_delete(self):
+        admin_test = self.retrieve(self.user.id)
         user = self.create(self.user_attributes)
         response = self.delete(user["id"])
+        users = self.list()
+        assert users == [admin_test, ]
         assert response.status_code == HTTPStatus.NO_CONTENT
 
     def test_list(self):
