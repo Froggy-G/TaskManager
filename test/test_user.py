@@ -61,3 +61,8 @@ class TestUserViewSet(TestViewSetBase):
                     break
         response = self.filter(filter=filter_name, filter_value=filter_value)
         assert response == filtered_users
+
+    def test_unauntificated_request(self):
+        response = self.unauntificated_request()
+        assert response.status_code == HTTPStatus.FORBIDDEN
+        
