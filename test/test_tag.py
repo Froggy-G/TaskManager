@@ -35,10 +35,9 @@ class TestTagViewSet(TestViewSetBase):
 
     def test_delete(self):
         tag = self.create(self.tag_attributes)
-        response = self.delete(tag["id"])
+        self.delete(tag["id"])
         tags = self.list()
         assert tags == []
-        assert response.status_code == HTTPStatus.NO_CONTENT
 
     def test_list(self):
         tags = self.create_list(self.tags_attributes)

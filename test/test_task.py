@@ -36,10 +36,9 @@ class TestTaskViewSet(TestViewSetBase):
     
     def test_delete(self):
         task = self.create(self.task_attributes)
-        response = self.delete(task["id"])
+        self.delete(task["id"])
         tasks = self.list()
         assert tasks == []
-        assert response.status_code == HTTPStatus.NO_CONTENT
 
     def test_list(self):
         tasks = self.create_list(self.tasks_attributes)
