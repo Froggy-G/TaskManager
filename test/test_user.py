@@ -53,16 +53,16 @@ class TestUserViewSet(TestViewSetBase):
         admin_test = self.retrieve(self.user.id)
         users = self.create_list(self.users_attributes)
         users.insert(0, admin_test)
-        filtered_users: list = []
+        expected_users: list = []
         for user in users:
             for char in user[filter_name]:
                 if char == filter_value:
-                    filtered_users.append(user)
+                    expected_users.append(user)
                     break
         response = self.filter(filter=filter_name, filter_value=filter_value)
-        assert response == filtered_users
+        assert response == expected_users
 
-    def test_unauntificated_request(self):
-        response = self.unauntificated_request()
+    def test_unauthenticated_request(self):
+        response = self.unauthenticated_request()
         assert response.status_code == HTTPStatus.FORBIDDEN
         

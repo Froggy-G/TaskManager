@@ -49,15 +49,15 @@ class TestTaskViewSet(TestViewSetBase):
         filter_name = "status"
         filter_value = "new_task"
         tasks = self.create_list(self.tasks_attributes)
-        filtered_tasks: list = []
+        expected_tasks: list = []
         for task in tasks:
             for field in task:
                 if field == filter_name and filter_value == task[filter_name]:
-                    filtered_tasks.append(task)
+                    expected_tasks.append(task)
         response = self.filter(filter=filter_name, filter_value=filter_value)
-        assert response == filtered_tasks
+        assert response == expected_tasks
     
-    def test_unauntificated_request(self):
-        response = self.unauntificated_request()
+    def test_unauthenticated_request(self):
+        response = self.unauthenticated_request()
         assert response.status_code == HTTPStatus.FORBIDDEN
         
