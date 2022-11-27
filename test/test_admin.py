@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Type, Container
-
 from django.db import models
 from django.urls import reverse
 from rest_framework.test import APIClient, APITestCase
