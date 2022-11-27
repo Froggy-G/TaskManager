@@ -4,6 +4,25 @@ from faker import Faker
 
 faker = Faker()
 
+class SuperUserFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = 'main.user'
+
+    username = factory.LazyAttribute(lambda _: faker.user_name())
+    first_name = factory.LazyAttribute(lambda _: faker.first_name())
+    last_name = factory.LazyAttribute(lambda _: faker.last_name())
+    email = factory.LazyAttribute(lambda _: faker.unique.email())
+    role = factory.LazyAttribute(
+        lambda _: faker.word(
+            ext_word_list=[
+                "developer",
+                "manager",
+                "admin",
+            ]
+        )
+    )
+    is_staff = True
+
 class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = 'main.user'

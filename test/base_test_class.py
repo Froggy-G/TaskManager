@@ -3,7 +3,7 @@ from main.models import User
 from django.urls import reverse
 from typing import Union, List
 from http import HTTPStatus
-from factories import UserFactory, factory
+from factories import factory, SuperUserFactory
 
 
 class TestViewSetBase(APITestCase):
@@ -19,7 +19,7 @@ class TestViewSetBase(APITestCase):
 
     @staticmethod
     def create_api_user():
-        user_attributes = factory.build(dict, FACTORY_CLASS=UserFactory)
+        user_attributes = factory.build(dict, FACTORY_CLASS=SuperUserFactory)
         return User.objects.create(**user_attributes)
 
     @classmethod
