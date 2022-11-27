@@ -43,8 +43,7 @@ class TestTagViewSet(TestViewSetBase):
         tags = self.create_list(self.tags_attributes)
         response = self.list()
         assert response == tags
-    
+
     def test_unauthenticated_request(self):
         response = self.unauthenticated_request()
         assert response.status_code == HTTPStatus.FORBIDDEN
-        

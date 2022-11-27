@@ -27,13 +27,13 @@ class TestTaskViewSet(TestViewSetBase):
         task = self.create(self.task_attributes)
         new_data = {
             "title": "Create tests",
-            "description": "I'm so tired of making these test's"
+            "description": "I'm so tired of making these test's",
         }
         updated_attributes = dict(self.task_attributes, **new_data)
         expected_response = self.expected_details(task, updated_attributes)
         response = self.update(new_data, task["id"])
         assert response == expected_response
-    
+
     def test_delete(self):
         task = self.create(self.task_attributes)
         self.delete(task["id"])
@@ -44,7 +44,7 @@ class TestTaskViewSet(TestViewSetBase):
         tasks = self.create_list(self.tasks_attributes)
         response = self.list()
         assert response == tasks
-    
+
     def test_filter(self):
         filter_name = "status"
         filter_value = "new_task"
@@ -56,8 +56,7 @@ class TestTaskViewSet(TestViewSetBase):
                     expected_tasks.append(task)
         response = self.filter(filter=filter_name, filter_value=filter_value)
         assert response == expected_tasks
-    
+
     def test_unauthenticated_request(self):
         response = self.unauthenticated_request()
         assert response.status_code == HTTPStatus.FORBIDDEN
-        

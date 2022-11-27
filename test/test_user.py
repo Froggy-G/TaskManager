@@ -16,13 +16,13 @@ class TestUserViewSet(TestViewSetBase):
         user = self.create(self.user_attributes)
         expected_response = self.expected_details(user, self.user_attributes)
         assert user == expected_response
-    
+
     def test_retrieve(self):
         user = self.create(self.user_attributes)
         response = self.retrieve(user["id"])
         expected_response = self.expected_details(user, self.user_attributes)
         assert response == expected_response
-    
+
     def test_update(self):
         user = self.create(self.user_attributes)
         new_data = {
@@ -38,7 +38,9 @@ class TestUserViewSet(TestViewSetBase):
         user = self.create(self.user_attributes)
         self.delete(user["id"])
         users = self.list()
-        assert users == [admin_test, ]
+        assert users == [
+            admin_test,
+        ]
 
     def test_list(self):
         admin_test = self.retrieve(self.user.id)
@@ -65,4 +67,3 @@ class TestUserViewSet(TestViewSetBase):
     def test_unauthenticated_request(self):
         response = self.unauthenticated_request()
         assert response.status_code == HTTPStatus.FORBIDDEN
-        
