@@ -22,5 +22,5 @@ class TaskAdmin(admin.ModelAdmin):
 
 @admin.register(User, site=task_manager_admin_site)
 class CustomUserAdmin(UserAdmin):
-    fieldsets = UserAdmin.fieldsets + ((None, {"fields": ("role",)}),)
-    add_fieldsets = UserAdmin.add_fieldsets + ((None, {"fields": ("role",)}),)
+    fieldsets = UserAdmin.fieldsets + ((None, {"fields": ("role", "date_of_birth", "phone",)}),)
+    add_fieldsets = UserAdmin.add_fieldsets + ((None, {"fields": ("role", "date_of_birth", "phone",)}),)
