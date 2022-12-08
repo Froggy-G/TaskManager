@@ -24,7 +24,7 @@ class SuperUserFactory(factory.django.DjangoModelFactory):
     )
     is_staff = True
     date_of_birth = factory.LazyAttribute(lambda _: faker.date())
-    phone = factory.LazyAttribute(lambda _: faker.unique.phone_number())
+    phone = factory.LazyAttribute(lambda _: faker.unique.msisdn())
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -45,7 +45,7 @@ class UserFactory(factory.django.DjangoModelFactory):
         )
     )
     date_of_birth = factory.LazyAttribute(lambda _: faker.date())
-    phone = factory.LazyAttribute(lambda _: faker.unique.phone_number())
+    phone = factory.LazyAttribute(lambda _: faker.unique.msisdn())
 
 
 class TagFactory(factory.django.DjangoModelFactory):
