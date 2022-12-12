@@ -36,25 +36,25 @@ class TestViewSetBase(APITestCase):
         return f"{url}?{filter}={filter_value}"
 
     def create(self, data: dict, args: List[Union[str, int]] = None) -> dict:
-        self.client.force_login(self.user)
+        self.client.force_authenticate(self.user)
         response = self.client.post(self.list_url(args), data=data, format="json")
         assert response.status_code == HTTPStatus.CREATED, response.content
         return response.data
 
     def retrieve(self, id: int = None) -> dict:
-        self.client.force_login(self.user)
+        self.client.force_authenticate(self.user)
         response = self.client.get(self.detail_url(id))
         assert response.status_code == HTTPStatus.OK, response.content
         return response.data
 
     def update(self, data: dict, id: int = None) -> dict:
-        self.client.force_login(self.user)
+        self.client.force_authenticate(self.user)
         response = self.client.patch(self.detail_url(id), data=data, format="json")
         assert response.status_code == HTTPStatus.OK, response.content
         return response.data
 
     def delete(self, id: int = None) -> dict:
-        self.client.force_login(self.user)
+        self.client.force_authenticate(self.user)
         response = self.client.delete(self.detail_url(id))
         assert response.status_code == HTTPStatus.NO_CONTENT
         return response
@@ -63,13 +63,13 @@ class TestViewSetBase(APITestCase):
         return list(map(self.create, data))
 
     def list(self) -> dict:
-        self.client.force_login(self.user)
+        self.client.force_authenticate(self.user)
         response = self.client.get(self.list_url())
         assert response.status_code == HTTPStatus.OK, response.content
         return response.data
 
     def filter(self, filter: str = None, filter_value: str = None) -> dict:
-        self.client.force_login(self.user)
+        self.client.force_authenticate(self.user)
         response = self.client.get(self.list_url_filter(filter, filter_value))
         assert response.status_code == HTTPStatus.OK, response.content
         return response.data
