@@ -30,6 +30,10 @@ class SuperUserFactory(UserFactory):
     is_staff = True
 
 
+class UserJWTFactory(UserFactory):
+    password = factory.PostGenerationMethodCall("set_password", "password")
+
+
 class TagFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = "main.tag"

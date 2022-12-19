@@ -193,6 +193,17 @@ python-versions = ">=3.7"
 python-dateutil = ">=2.4"
 
 [[package]]
+name = "freezegun"
+version = "1.2.2"
+description = "Let your Python tests travel through time"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+python-dateutil = ">=2.7"
+
+[[package]]
 name = "idna"
 version = "3.4"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -503,7 +514,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "flake8 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ea1ec547acde033d1e33c876734371dcf540c35d40044be9a410c1ead55d9bfc"
+content-hash = "c5a912d620efa1bc457391a8666258e7f42ed02feeb55396c94c2330ccf621ba"
 
 [metadata.files]
 asgiref = []
@@ -521,6 +532,7 @@ drf-writable-nested = []
 drf-yasg = []
 factory-boy = []
 faker = []
+freezegun = []
 idna = []
 importlib-metadata = []
 inflection = []
