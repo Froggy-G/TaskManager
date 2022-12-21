@@ -9,7 +9,7 @@ on:
       - 'develop'
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,3 +19,9 @@ jobs:
           COVERAGE: true
           RAILS_ENV: test
         run: docker-compose --file docker-compose.ci.yml run --rm api make test
+
+      - name: Coveralls
+        uses: AndreMiras/coveralls-python-action@v20201129
+        with:
+          parallel: true
+          flag-name: Run tests
