@@ -16,6 +16,7 @@ factory-boy = "^3.2.1"
 drf-writable-nested = "^0.7.0"
 djangorestframework-simplejwt = "^5.2.2"
 freezegun = "^1.2.2"
+coveralls = "^3.3.1"
 
 [tool.poetry.dev-dependencies]
 pytest-django = "^4.5.2"
