@@ -25,7 +25,7 @@ jobs:
         run: docker-compose --file docker-compose.ci.yml run --rm api make test
       
       - name: Coveralls
-        uses: AndreMiras/coveralls-python-action@develop
+        uses: AndreMiras/coveralls-python-action@v20201129
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Coveralls Finished
-      uses: AndreMiras/coveralls-python-action@develop
+      uses: AndreMiras/coveralls-python-action@v20201129
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel-finished: true
