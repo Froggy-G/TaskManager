@@ -1,5 +1,10 @@
 name: Main
 
+environment: for_coveralls
+
+env:
+  COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
 on:
   pull_request:
     branches:
@@ -11,7 +16,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: for_coveralls
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
