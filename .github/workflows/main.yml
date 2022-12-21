@@ -18,14 +18,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
-      - name: Run tests
+      - name: Unit tests
         env:
           COVERAGE: true
           DJANGO_ENV: test
         run: docker-compose --file docker-compose.ci.yml run --rm api make test
       
-      - name: Coveralls Python
-        uses: AndreMiras/coveralls-python-action@v20201129
+      - name: Coveralls
+        uses: AndreMiras/coveralls-python-action@develop
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
