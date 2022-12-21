@@ -16,6 +16,7 @@ factory-boy = "^3.2.1"
 drf-writable-nested = "^0.7.0"
 djangorestframework-simplejwt = "^5.2.2"
 freezegun = "^1.2.2"
+coverage = {extras = ["toml"], version = "^7.0.0"}
 
 [tool.poetry.dev-dependencies]
 pytest-django = "^4.5.2"
@@ -23,3 +24,6 @@ pytest-django = "^4.5.2"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.run]
+relative_files = true

@@ -76,6 +76,20 @@ python-versions = "*"
 jinja2 = "*"
 
 [[package]]
+name = "coverage"
+version = "7.0.0"
+description = "Code coverage measurement for Python"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+tomli = {version = "*", optional = true, markers = "python_full_version <= \"3.11.0a6\" and extra == \"toml\""}
+
+[package.extras]
+toml = ["tomli"]
+
+[[package]]
 name = "django"
 version = "4.1.2"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -466,7 +480,7 @@ python-versions = ">=3.5"
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -514,7 +528,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "flake8 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c5a912d620efa1bc457391a8666258e7f42ed02feeb55396c94c2330ccf621ba"
+content-hash = "b50ae09f91657f4e97bc673bba28c921d329c7daeff8911f69a5bfb87ef3cdf6"
 
 [metadata.files]
 asgiref = []
@@ -524,6 +538,7 @@ charset-normalizer = []
 colorama = []
 coreapi = []
 coreschema = []
+coverage = []
 django = []
 django-filter = []
 djangorestframework = []
