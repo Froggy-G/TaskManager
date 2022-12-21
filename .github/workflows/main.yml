@@ -13,8 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
       - name: Run tests
         env:
           COVERAGE: true
           RAILS_ENV: test
-        run: docker-compose --file docker-compose.ci.yml run --rm api pytest
+        run: docker-compose --file docker-compose.ci.yml run --rm api make test
