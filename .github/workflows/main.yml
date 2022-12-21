@@ -21,4 +21,4 @@ jobs:
           DJANGO_ENV: test
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: coveralls --service=github
+        run: docker-compose --file docker-compose.ci.yml run --rm api coveralls --service=github
