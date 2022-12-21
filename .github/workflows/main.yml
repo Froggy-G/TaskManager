@@ -24,4 +24,13 @@ jobs:
         uses: AndreMiras/coveralls-python-action@v20201129
         with:
           parallel: true
-          flag-name: Run tests
+          flag-name: Unit Test
+  
+  coveralls_finish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: AndreMiras/coveralls-python-action@develop
+      with:
+        parallel-finished: true
