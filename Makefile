@@ -1,4 +1,6 @@
 .PHONY: test
 
 test:
-	python3 -m pytest
+	coverage run -m pytest
+	coverage report
+	coveralls
