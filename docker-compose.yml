@@ -22,7 +22,7 @@ services:
       - DATABASE_PASSWORD=postgres
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
-      
+
       - ROLLBAR_TOKEN=ad0e321584cb49768909a73b15100fa7
     command: newrelic-admin run-program python manage.py runserver 0.0.0.0:8000
 
@@ -31,5 +31,5 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
