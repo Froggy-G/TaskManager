@@ -459,6 +459,18 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
+name = "rollbar"
+version = "0.16.3"
+description = "Easy and powerful exception tracking with Rollbar. Send messages and exceptions with arbitrary context, get back aggregates, and debug production issues quickly."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+requests = {version = ">=0.12.1", markers = "python_version >= \"3.6\""}
+six = ">=1.9.0"
+
+[[package]]
 name = "ruamel.yaml"
 version = "0.17.21"
 description = "ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order"
@@ -549,7 +561,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "flake8 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "262d4c2c3e46362558c96cdf99b653021bca2ba73468d3cbc7a638ed4895163c"
+content-hash = "ec41b6ea7b37e9326930a5ed65d5919d8493ec71da9af423f4c2a3045be313df"
 
 [metadata.files]
 asgiref = []
@@ -590,6 +602,7 @@ pytest-django = []
 python-dateutil = []
 pytz = []
 requests = []
+rollbar = []
 "ruamel.yaml" = []
 "ruamel.yaml.clib" = []
 six = []

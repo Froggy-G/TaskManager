@@ -18,6 +18,7 @@ services:
       DATABASE_PASSWORD: postgres
       DATABASE_HOST: db
       DATABASE_PORT: 5432
+      ROLLBAR_TOKEN: ad0e321584cb49768909a73b15100fa7
     command: python manage.py runserver 0.0.0.0:8000
 
   db:
