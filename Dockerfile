@@ -26,9 +26,9 @@ RUN apt-get update -qq \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && truncate -s 0 /var/log/*log
 
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py > get-poetry.py \
-    && python get-poetry.py --version 1.1.7 \
-    && rm get-poetry.py
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py > install-poetry.py \
+    && python install-poetry.py --version 1.1.7 \
+    && rm install-poetry.py
 
 ENV PATH $PATH:/root/.poetry/bin
 
