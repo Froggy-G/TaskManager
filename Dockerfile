@@ -30,10 +30,10 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/inst
     && python install-poetry.py --version 1.1.7 \
     && rm install-poetry.py
 
-ENV PATH $PATH:/root/.poetry/bin
+ENV PATH="${PATH}:/root/.local/bin"
 
 RUN poetry config virtualenvs.create false
-ENV PATH $PATH:/root/.poetry/bin
+ENV PATH="${PATH}:/root/.local/bin"
 
 RUN mkdir -p /app
 WORKDIR /app
