@@ -323,6 +323,17 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "newrelic"
+version = "8.5.0"
+description = "New Relic Python Agent"
+category = "main"
+optional = false
+python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*"
+
+[package.extras]
+infinite-tracing = ["grpcio", "protobuf"]
+
+[[package]]
 name = "packaging"
 version = "21.3"
 description = "Core utilities for Python packages"
@@ -561,7 +572,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "flake8 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ec41b6ea7b37e9326930a5ed65d5919d8493ec71da9af423f4c2a3045be313df"
+content-hash = "69bc7c7233ad711dba59f92076dd8f90c60fa3c46d57e2d68c4a38ce8db62ef9"
 
 [metadata.files]
 asgiref = []
@@ -591,6 +602,7 @@ itypes = []
 jinja2 = []
 markdown = []
 markupsafe = []
+newrelic = []
 packaging = []
 pluggy = []
 psycopg2-binary = []

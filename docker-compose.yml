@@ -6,25 +6,30 @@ services:
     volumes: &api-volumes
       - ~/.ssh:/root/.ssh
       - ~/.bash_history:/root/.bash_history
+      - .:/app
     ports:
       - 8000:8000
     depends_on:
       - db
     environment: &api-environment
-      DJANGO_ENV: dev
-      DJANGO_SECRET_KEY: secret_key
-      DATABASE_NAME: postgres
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: postgres
-      DATABASE_HOST: db
-      DATABASE_PORT: 5432
-      ROLLBAR_TOKEN: ad0e321584cb49768909a73b15100fa7
-    command: python manage.py runserver 0.0.0.0:8000
+      - NEW_RELIC_CONFIG_FILE=/app/newrelic.ini
+
+      - DJANGO_ENV=dev
+      - DJANGO_SECRET_KEY=secret_key
+
+      - DATABASE_NAME=postgres
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+
+      - ROLLBAR_TOKEN=ad0e321584cb49768909a73b15100fa7
+    command: newrelic-admin run-program python manage.py runserver 0.0.0.0:8000
 
   db:
     image: postgres:11.4
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
