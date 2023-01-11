@@ -24,6 +24,14 @@ services:
       - DATABASE_PORT=5432
 
       - ROLLBAR_TOKEN=ad0e321584cb49768909a73b15100fa7
+
+      - EMAIL_USE_SSL=1
+      - EMAIL_USE_TLS=0
+      - EMAIL_HOST=smtp.mail.ru
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_PORT=465
+
     command: newrelic-admin run-program python manage.py runserver 0.0.0.0:8000
 
   db:
