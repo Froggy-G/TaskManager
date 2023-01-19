@@ -19,6 +19,8 @@ freezegun = "^1.2.2"
 rollbar = "^0.16.3"
 newrelic = "^8.5.0"
 coveralls = "^3.3.1"
+django-storages = "^1.13.2"
+boto3 = "^1.26.52"
 
 [tool.poetry.dev-dependencies]
 pytest-django = "^4.5.2"
