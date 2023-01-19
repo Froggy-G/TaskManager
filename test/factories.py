@@ -41,7 +41,7 @@ class TagFactory(factory.django.DjangoModelFactory):
     title = factory.LazyAttribute(lambda _: faker.text(max_nb_chars=50))
 
 
-class TaskFactory(factory.django.DjangoModelFactory):
+class BaseTaskFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = "main.task"
 
@@ -77,4 +77,7 @@ class TaskFactory(factory.django.DjangoModelFactory):
         )
     )
     executor = None
+
+
+class TaskFactory(BaseTaskFactory):
     tags = []
