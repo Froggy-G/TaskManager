@@ -36,7 +36,9 @@ class TestViewSetBase(APITestCase):
         url = reverse(f"{cls.basename}-list")
         return f"{url}?{filter}={filter_value}"
 
-    def create(self, data: dict, args: List[Union[str, int]] = None, format: str="json") -> dict:
+    def create(
+        self, data: dict, args: List[Union[str, int]] = None, format: str = "json"
+    ) -> dict:
         self.client.force_authenticate(self.user)
         response = self.client.post(self.list_url(args), data=data, format=format)
         if format == "multipart":
@@ -62,7 +64,7 @@ class TestViewSetBase(APITestCase):
         assert response.status_code == HTTPStatus.NO_CONTENT
         return response
 
-    def create_list(self, data: list[dict], format:str="json") -> list[dict]:
+    def create_list(self, data: list[dict], format: str = "json") -> list[dict]:
         return list(map(partial(self.create, format=format), data))
 
     def list(self) -> dict:

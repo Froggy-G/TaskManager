@@ -5,7 +5,7 @@ from http import HTTPStatus
 
 class TestUserViewSet(TestViewSetBase):
     basename = "users"
-    
+
     @staticmethod
     def expected_details(entity: dict, attributes: dict):
         return {
@@ -80,15 +80,19 @@ class TestUserViewSet(TestViewSetBase):
     def test_large_avatar(self) -> None:
         self.client.force_authenticate(self.user)
         user_attributes = factory.build(dict, FACTORY_CLASS=LargeAvatarUserFactory)
-        response = self.client.post(self.list_url(), data=user_attributes, format="multipart")
+        response = self.client.post(
+            self.list_url(), data=user_attributes, format="multipart"
+        )
         assert response.status_code == HTTPStatus.BAD_REQUEST
-        assert response.json() == {"avatar_picture":["Maximum size 1048576 exceeded."]}
+        assert response.json() == {"avatar_picture": ["Maximum size 1048576 exceeded."]}
 
     def test_avatar_bad_extension(self) -> None:
         self.client.force_authenticate(self.user)
         user_attributes = factory.build(dict, FACTORY_CLASS=UserFactory)
         user_attributes["avatar_picture"].name = "bad_extension.pdf"
-        response = self.client.post(self.list_url(), data=user_attributes, format="multipart")
+        response = self.client.post(
+            self.list_url(), data=user_attributes, format="multipart"
+        )
         print(response)
         assert response.status_code == HTTPStatus.BAD_REQUEST
         assert response.json() == {

@@ -14,6 +14,7 @@ class ImageFileProvider(BaseProvider):
             self.generator.image(image_format=fmt),
         )
 
+
 faker.add_provider(ImageFileProvider)
 
 
@@ -45,6 +46,7 @@ class SuperUserFactory(UserFactory):
 
 class UserJWTFactory(UserFactory):
     password = factory.PostGenerationMethodCall("set_password", "password")
+
 
 class LargeAvatarUserFactory(UserFactory):
     avatar_picture = SimpleUploadedFile("large.jpg", b"x" * 2 * 1024 * 1024)
