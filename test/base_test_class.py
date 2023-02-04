@@ -41,8 +41,6 @@ class TestViewSetBase(APITestCase):
     ) -> dict:
         self.client.force_authenticate(self.user)
         response = self.client.post(self.list_url(args), data=data, format=format)
-        if format == "multipart":
-            return response.data
         assert response.status_code == HTTPStatus.CREATED, response.content
         return response.data
 
