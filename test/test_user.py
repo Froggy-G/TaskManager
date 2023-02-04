@@ -93,7 +93,6 @@ class TestUserViewSet(TestViewSetBase):
         response = self.client.post(
             self.list_url(), data=user_attributes, format="multipart"
         )
-        print(response)
         assert response.status_code == HTTPStatus.BAD_REQUEST
         assert response.json() == {
             "avatar_picture": [
