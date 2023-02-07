@@ -1,8 +1,21 @@
 import factory
 from faker import Faker
+from django.core.files.uploadedfile import SimpleUploadedFile
+from faker.providers import BaseProvider
 
 
 faker = Faker()
+
+
+class ImageFileProvider(BaseProvider):
+    def image_file(self, fmt: str = "jpeg") -> SimpleUploadedFile:
+        return SimpleUploadedFile(
+            self.generator.file_name(extension=fmt),
+            self.generator.image(image_format=fmt),
+        )
+
+
+faker.add_provider(ImageFileProvider)
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -24,6 +37,7 @@ class UserFactory(factory.django.DjangoModelFactory):
     )
     date_of_birth = factory.LazyAttribute(lambda _: faker.date())
     phone = factory.LazyAttribute(lambda _: faker.unique.msisdn())
+    avatar_picture = factory.LazyAttribute(lambda _: faker.unique.image_file("jpeg"))
 
 
 class SuperUserFactory(UserFactory):
@@ -32,6 +46,10 @@ class SuperUserFactory(UserFactory):
 
 class UserJWTFactory(UserFactory):
     password = factory.PostGenerationMethodCall("set_password", "password")
+
+
+class LargeAvatarUserFactory(UserFactory):
+    avatar_picture = SimpleUploadedFile("large.jpg", b"x" * 2 * 1024 * 1024)
 
 
 class TagFactory(factory.django.DjangoModelFactory):
